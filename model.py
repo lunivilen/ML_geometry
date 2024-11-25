@@ -8,13 +8,13 @@ class FCCube(nn.Module):
     def __init__(self):
         super(FCCube, self).__init__()
         # Полносвязные слои
-        self.fc1 = nn.Linear(3, 16, device=device)
-        self.fc2 = nn.Linear(16, 16, device=device)
+        self.fc1 = nn.Linear(3, 32, device=device)
+        self.fc2 = nn.Linear(32, 16, device=device)
         self.fc3 = nn.Linear(16, 8, device=device)
         self.fc4 = nn.Linear(8, 2, device=device)
 
         # Функция активации
-        self.relu = nn.PReLU(num_parameters=1, init=0.25).to(device)
+        self.relu = nn.PReLU(num_parameters=1, init=0.1).to(device)
 
     def forward(self, x):
         # Прямой проход через полносвязные слои

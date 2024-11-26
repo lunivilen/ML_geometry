@@ -102,10 +102,6 @@ def visualize_classifier_plotly(model, valid_loader, cube_vertices, device):
             xaxis_title='X',
             yaxis_title='Y',
             zaxis_title='Z'
-        ),
-        legend=dict(
-            x=0.1, y=0.9,
-            bgcolor="rgba(255, 255, 255, 0.7)"
         )
     )
 

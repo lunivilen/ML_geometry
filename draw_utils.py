@@ -51,6 +51,8 @@ def visualize_classifier_plotly(model, valid_loader, cube_vertices, device):
     true_labels = np.hstack(true_labels)
     predicted_labels = np.hstack(predicted_labels)
 
+    print(points)
+
     # Определяем правильно и неправильно классифицированные точки
     correct_points = points[true_labels == predicted_labels]
     incorrect_points = points[true_labels != predicted_labels]
@@ -60,7 +62,7 @@ def visualize_classifier_plotly(model, valid_loader, cube_vertices, device):
     outside_correct = correct_points[predicted_labels[true_labels == predicted_labels] == 0]
 
     # Вычисление координат рёбер куба
-    edge_x, edge_y, edge_z = calculate_cube_edges(cube_vertices)
+    # edge_x, edge_y, edge_z = calculate_cube_edges(cube_vertices)
 
     # Создаем фигуру Plotly
     fig = go.Figure()
@@ -87,13 +89,13 @@ def visualize_classifier_plotly(model, valid_loader, cube_vertices, device):
         name='Неправильно классифицировано'
     ))
 
-    # Добавляем рёбра куба
-    fig.add_trace(go.Scatter3d(
-        x=edge_x, y=edge_y, z=edge_z,
-        mode='lines',
-        line=dict(color='red', width=5),  # Толстые красные рёбра
-        name='Рёбра куба'
-    ))
+    # # Добавляем рёбра куба
+    # fig.add_trace(go.Scatter3d(
+    #     x=edge_x, y=edge_y, z=edge_z,
+    #     mode='lines',
+    #     line=dict(color='red', width=5),  # Толстые красные рёбра
+    #     name='Рёбра куба'
+    # ))
 
     # Настройка визуализации
     fig.update_layout(
